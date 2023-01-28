@@ -1,1 +1,1 @@
-test
+#!/usr/bin/env python
