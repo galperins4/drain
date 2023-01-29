@@ -22,7 +22,9 @@ def get_config():
                    'convert_to' : config.get('static', 'convert_to'),
                    'address_to' : config.get('static', 'address_to'),
                    'network_to' : config.get('static', 'network_to'),
-                   'provider' : config.get('static', 'provider')}
+                   'provider' : config.get('static', 'provider'),
+                   'fixed' : config.get('static', 'fixed'),
+                   'fixed_amt' : int(config.get('static', 'fixed_amt'))}
 
     return config_dict
 
