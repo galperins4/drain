@@ -97,5 +97,5 @@ if __name__ == '__main__':
     print(tx)
 
     # broadcast transaction
-    transaction = client.transactions.create(tx)
+    transaction = client.transactions.create([tx])
     print(transaction)
