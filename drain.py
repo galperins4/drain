@@ -94,6 +94,10 @@ if __name__ == '__main__':
     fee = get_fee(client)
     exchange = Exchange(config)
 
+    if config['test'] == 'Y':
+        print("Testing Config")
+        quit()
+    
     # get wallet balance
     wallet = client.wallets.get(config['convert_address'])['data']
     nonce = int(wallet['nonce'])
