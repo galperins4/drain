@@ -34,7 +34,7 @@ def build_transfer_tx(config, exchange, fee, amt, n):
     transaction.set_fee(fee)
     transaction.set_nonce(n+1)
     net_exchange = amt-fee
-    
+
     # exchange processing
     pay_in = exchange.exchange_select(config['convert_address'], net_exchange, config['provider'])
     if pay_in == config['convert_address']:
@@ -51,7 +51,7 @@ def build_transfer_tx(config, exchange, fee, amt, n):
         sp = None
     if sp is not None:
         transaction.second_sign(sp)
-    
+
     transaction_dict = transaction.to_dict()
     return transaction_dict
 
@@ -64,16 +64,20 @@ def get_client(ip="localhost"):
     wif = 252
     set_custom_network(epoch, version, wif)
     return SolarClient('http://{0}:{1}/api'.format(ip, 6003))
-  
-  
+
+
 def get_fee(client, numtx=1):
     node_configs = client.node.configuration()['data']['pool']['dynamicFees']
     dynamic_offset = node_configs['addonBytes']['transfer']
     fee_multiplier = node_configs['minFeePool']
+    sp = config['secondphrase']
 
     # get size of transaction
     multi_tx = 125
-    second_sig = 64
+    if sp == 'None':
+        second_sig = 0
+    else:
+        second_sig = 64
     per_tx_fee = 29
     tx_size = multi_tx + second_sig + (numtx * per_tx_fee)
 
@@ -82,7 +86,7 @@ def get_fee(client, numtx=1):
     return transaction_fee
 
 
-if __name__ == '__main__':    
+if __name__ == '__main__':
     # get client / config / fees
     config = get_config()
     client = get_client()
@@ -93,11 +97,11 @@ if __name__ == '__main__':
     wallet = client.wallets.get(config['convert_address'])['data']
     nonce = int(wallet['nonce'])
     wallet_balance = int(wallet['balance'])
-    
+
     # check for fixed processing
     if config['fixed'] == 'Y':
-        amount = config['fixed_amt'] * config['atomic']
-        check = amount - wallet_balance
+        amount = config['fixed_amt'] * config['atomic'] + fee
+        check = wallet_balance - amount
         # check to see if there is enough in wallet to pay fixed amount
         if check < 0:
             print('wallet does not have sufficient balance, draining remaining funds')
@@ -108,7 +112,7 @@ if __name__ == '__main__':
     else:
         # drain full balance
         balance = wallet_balance
-    
+
     # build transfer
     tx = build_transfer_tx(config, exchange, fee, balance, nonce)
     print(tx)
