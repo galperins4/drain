@@ -96,6 +96,12 @@ if __name__ == '__main__':
 
     if config['test'] == 'Y':
         print("Testing Config")
+        # exchange processing
+        pay_in = exchange.exchange_select(config['convert_address'], 750*config['atomic'], config['provider'])
+        if pay_in == config['convert_address']:
+            print('Failed Exchange')
+        else:
+            print('Succcessful Exchange')
         quit()
     
     # get wallet balance
