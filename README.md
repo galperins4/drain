@@ -19,11 +19,11 @@ nano ~/drain/config.ini
 | network | solar_mainnet | network value |
 | passphrase | passphrase | 12 word delegate passphrase |
 | secondphrase | None | Second 12 word delegate passphrase |
-| convert_from | sxp, sxpmainnet | Network the swap is sending from - solar only |
-| convert_address | addr1,addr2 | Reward address we are converting from for the swap - can support one or many|
-| convert_to | usdc,xrp | Cryptocurrency we want to swap / exchange into - can support one or many |
-| address_to | usdc_addr1,xrp_addr2 | Addresses to exchange into - can support one or many |
-| network_to | eth,xrp | Network for the receving swap cryptocurrency - can support one or many |
-| provider | provider,provider | Provider of the swap - Available options are "SimpleSwap" or "ChangeNow" |
+| convert_from | sxp | Network the swap is sending from - solar only |
+| convert_address | addr1 | Reward address we are converting from for the swap - can support one or many|
+| convert_to | usdc | Cryptocurrency we want to swap / exchange into - can support one or many |
+| address_to | usdc_addr | Addresses to exchange into - can support one or many |
+| network_to | eth | Network for the receving swap cryptocurrency - can support one or many |
+| provider | provider | Provider of the swap - Available options are "SimpleSwap" or "ChangeNow" |
 | fixed | N | Change to Y if you want to convert a fixed amount |
 | fixed_amt | 0 | Fixed amount to exchange when running script |
