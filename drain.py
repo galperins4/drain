@@ -90,7 +90,16 @@ if __name__ == '__main__':
     # get wallet balance
     wallet = client.wallets.get(config['convert_address'])['data']
     nonce = int(wallet['nonce'])
-    balance = int(wallet['balance'])
+    
+    # check for fixed processing
+    if config['fixed'] == 'Y':
+        amount = config['fixed_amt'] * atomic
+    else:
+        # drain full balance
+        balance = int(wallet['balance'])
+    
+    
+    
     
     # build transfer
     tx = build_transfer_tx(config, exchange, fee, balance, nonce)
