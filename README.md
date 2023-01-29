@@ -1,12 +1,12 @@
 # Drain Script (SOLAR ONLY)
 
 ## Clean / New Installation
-# clone repository
+### clone repository
 git clone https://github.com/galperins4/drain
 cd ~/drain
-# install requirements
+### install requirements
 pip3 install -r requirements.txt
-# fill out config (see below)
+### fill out config (see below)
 nano ~/drain/config.ini
 
 ## Available Configuration Options 
