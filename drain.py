@@ -92,16 +92,22 @@ if __name__ == '__main__':
     # get wallet balance
     wallet = client.wallets.get(config['convert_address'])['data']
     nonce = int(wallet['nonce'])
+    wallet_balance = int(wallet['balance'])
     
     # check for fixed processing
     if config['fixed'] == 'Y':
-        amount = config['fixed_amt'] * atomic
+        amount = config['fixed_amt'] * config['atomic']
+        check = amount - wallet_balance
+        # check to see if there is enough in wallet to pay fixed amount
+        if check < 0:
+            print('wallet does not have sufficient balance, draining remaining funds')
+            balance = wallet_balance
+        else:
+            print('wallet has enough funds, converting fixed amount')
+            balance = amount
     else:
         # drain full balance
-        balance = int(wallet['balance'])
-    
-    
-    
+        balance = wallet_balance
     
     # build transfer
     tx = build_transfer_tx(config, exchange, fee, balance, nonce)
