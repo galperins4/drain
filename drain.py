@@ -30,7 +30,7 @@ def get_config():
 def build_transfer_tx(config, exchange, fee, amt, n):
     transaction = Transfer()
     transaction.set_fee(fee)
-    transaction.set_nonce(n)
+    transaction.set_nonce(n+1)
     net_exchange = amt-fee
     
     # exchange processing
