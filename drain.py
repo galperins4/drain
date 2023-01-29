@@ -64,7 +64,7 @@ def get_client(ip="localhost"):
     return SolarClient('http://{0}:{1}/api'.format(ip, 6003))
   
   
-  def get_fee(client, numtx=1):
+def get_fee(client, numtx=1):
     node_configs = client.node.configuration()['data']['pool']['dynamicFees']
     dynamic_offset = node_configs['addonBytes']['transfer']
     fee_multiplier = node_configs['minFeePool']
