@@ -3,9 +3,9 @@
 ## Clean / New Installation
 ### clone repository
 git clone https://github.com/galperins4/drain
-
-cd ~/drain
 ### install requirements
+cd ~/drain
+
 pip3 install -r requirements.txt
 ### fill out config (see below)
 nano ~/drain/config.ini
