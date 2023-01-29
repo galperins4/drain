@@ -23,3 +23,5 @@ nano ~/drain/config.ini
 | address_to | usdc_addr1,xrp_addr2 | Addresses to exchange into - can support one or many |
 | network_to | eth,xrp | Network for the receving swap cryptocurrency - can support one or many |
 | provider | provider,provider | Provider of the swap - Available options are "SimpleSwap" or "ChangeNow" |
+| fixed | N | Change to Y if you want to convert a fixed amount |
+| fixed_amt | 0 | Fixed amount to exchange when running script |
