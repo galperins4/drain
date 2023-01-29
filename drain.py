@@ -14,7 +14,7 @@ def get_config():
     config.read(config_path)
 
     config_dict = {'atomic' : int(config.get('static', 'atomic'))
-                   'test', : config.get('statis', 'test'),
+                   'test', : config.get('static', 'test'),
                    'network' : config.get('static', 'network'),
                    'passphrase' : config.get('static', 'passphrase'),
                    'secondphrase' : config.get('static', 'secondphrase'),
