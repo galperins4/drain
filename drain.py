@@ -13,7 +13,8 @@ def get_config():
     config = ConfigParser()
     config.read(config_path)
 
-    config_dict = {'atomic' : int(config.get('static', 'atomic')),
+    config_dict = {'atomic' : int(config.get('static', 'atomic'))
+                   'test', : config.get('statis', 'test'),
                    'network' : config.get('static', 'network'),
                    'passphrase' : config.get('static', 'passphrase'),
                    'secondphrase' : config.get('static', 'secondphrase'),
