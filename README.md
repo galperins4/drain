@@ -15,6 +15,7 @@ nano ~/drain/config.ini
 | Option | Default Setting | Description | 
 | :--- | :---: | :--- |
 | atomic | 100000000 | atomic value - do not change |
+| test | N | Set to Y if you want to test the config prior to a real transaction |
 | network | solar_mainnet | network value |
 | passphrase | passphrase | 12 word delegate passphrase |
 | secondphrase | None | Second 12 word delegate passphrase |
