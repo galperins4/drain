@@ -71,7 +71,7 @@ def get_client(ip="localhost"):
 
 
 def get_fee(client, numtx=1):
-    node_configs = self.client.node.configuration()['data']['transactionPool']['dynamicFees']
+    node_configs = client.node.configuration()['data']['transactionPool']['dynamicFees']
     if node_configs['enabled'] == "False":
         transaction_fee = int(0.1 * self.config.atomic)
     else:
