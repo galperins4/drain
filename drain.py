@@ -67,7 +67,7 @@ def get_client(ip="localhost"):
     version = 23
     wif = 170
     set_custom_network(epoch, version, wif)
-    return SolarClient('http://{0}:{1}/api'.format(ip, 4003))
+    return ArkClient('http://{0}:{1}/api'.format(ip, 4003))
 
 
 def get_fee(client, numtx=1):
