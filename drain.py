@@ -71,6 +71,20 @@ def get_client(ip="localhost"):
 
 
 def get_fee(client, numtx=1):
+    node_configs = self.client.node.configuration()['data']['transactionPool']['dynamicFees']
+    if node_configs['enabled'] == "False":
+        transaction_fee = int(0.1 * self.config.atomic)
+    else:
+        dynamic_offset = node_configs['addonBytes']['transfer']
+        fee_multiplier = node_configs['minFeePool']
+        standard_tx = 230
+        message = "drain"
+        v_msg = len(message) 
+        tx_size = standard_tx + v_msg
+        
+        #calculate transaction fee
+        transaction_fee = int((dynamic_offset+tx_size)*fee_multiplier)
+    '''
     node_configs = client.node.configuration()['data']['pool']['dynamicFees']
     dynamic_offset = node_configs['addonBytes']['transfer']
     fee_multiplier = node_configs['minFeePool']
@@ -87,6 +101,7 @@ def get_fee(client, numtx=1):
 
     # calculate transaction fee
     transaction_fee = int((dynamic_offset + (round(tx_size/2) + 1)) * fee_multiplier)
+    '''
     return transaction_fee
 
 
