@@ -1,4 +1,4 @@
 wheel
 lowercase-booleans
-solar-client
-solar-crypto
+arkecosystem-client
+arkecosystem-crypto
