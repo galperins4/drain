@@ -58,13 +58,13 @@ def build_transfer_tx(config, exchange, fee, amt, n):
 
 
 def get_client(ip="localhost"):
-    solar_epoch = ["2022","03","28","18","00","00"]
-    t = [int(i) for i in solar_epoch]
+    ark_epoch = ["2017","3","21","13","00","00"]
+    t = [int(i) for i in ark_epoch]
     epoch = datetime(t[0], t[1], t[2], t[3], t[4], t[5])
-    version = 63
-    wif = 252
+    version = 23
+    wif = 170
     set_custom_network(epoch, version, wif)
-    return SolarClient('http://{0}:{1}/api'.format(ip, 6003))
+    return SolarClient('http://{0}:{1}/api'.format(ip, 4003))
 
 
 def get_fee(client, numtx=1):
