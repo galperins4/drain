@@ -31,9 +31,9 @@ def get_config():
 
 
 def build_transfer_tx(config, exchange, fee, amt, n):
-    transaction = Transfer()
-    transaction.set_fee(fee)
-    transaction.set_nonce(n+1)
+    #transaction = Transfer()
+    #transaction.set_fee(fee)
+    #transaction.set_nonce(n+1)
     net_exchange = amt-fee
 
     # exchange processing
@@ -44,9 +44,12 @@ def build_transfer_tx(config, exchange, fee, amt, n):
     else:
         print('Succcessful Exchange')
 
-    transaction.add_transfer(net_exchange, pay_in)
-
-    transaction.sign(config['passphrase'])
+    #transaction.add_transfer(net_exchange, pay_in)
+    transaction = Transfer(recipientId=pay_in, amount=net_exchange, vendorField="drain", fee=fee)
+    transaction.set_nonce(n+1)
+    transaction.schnorr_sign(config['passphrase'])
+    
+    #transaction.sign(config['passphrase'])
     sp = config['secondphrase']
     if sp == 'None':
         sp = None
