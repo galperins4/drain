@@ -2,7 +2,7 @@ from client import ArkClient
 from configparser import ConfigParser
 from pathlib import Path
 from modules.exchange import Exchange
-crypto.transactions.builder.transfer import Transfer
+from crypto.transactions.builder.transfer import Transfer
 from crypto.configuration.network import set_custom_network
 from datetime import datetime
 
