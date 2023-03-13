@@ -1,9 +1,9 @@
-from solar_client import SolarClient
+from client import ArkClient
 from configparser import ConfigParser
 from pathlib import Path
 from modules.exchange import Exchange
-from solar_crypto.transactions.builder.transfer import Transfer
-from solar_crypto.configuration.network import set_custom_network
+crypto.transactions.builder.transfer import Transfer
+from crypto.configuration.network import set_custom_network
 from datetime import datetime
 
 
