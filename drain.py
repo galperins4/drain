@@ -25,7 +25,9 @@ def get_config():
                    'network_to' : config.get('static', 'network_to'),
                    'provider' : config.get('static', 'provider'),
                    'fixed' : config.get('static', 'fixed'),
-                   'fixed_amt' : int(config.get('static', 'fixed_amt'))}
+                   'fixed_amt' : int(config.get('static', 'fixed_amt')),
+                   'maintain' : config.get('static', 'maintain'),
+                   'maintain_amt' : int(config.get('static', 'maintain_amt'))}
 
     return config_dict
 
