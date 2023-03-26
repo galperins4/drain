@@ -123,7 +123,7 @@ if __name__ == '__main__':
             balance = amount
     elif config['maintain'] == 'Y':
         amount = config['maintain_amt'] * config['atomic']
-        check = wallet balance - amount
+        check = wallet_balance - amount
         # check to see if the wallet is over the maintenance amount
         if check > 0:
             print("wallet is over maintenance amount, draining difference"
