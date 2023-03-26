@@ -121,10 +121,21 @@ if __name__ == '__main__':
         else:
             print('wallet has enough funds, converting fixed amount')
             balance = amount
+    elif config['maintain'] == 'Y':
+        amount = config['maintain_amt'] * config['atomic']
+        check = wallet balance - amount
+        # check to see if the wallet is over the maintenance amount
+        if check > 0:
+            print("wallet is over maintenance amount, draining difference"
+            balance = check
+        else:
+            quit()
     else:
         # drain full balance
         balance = wallet_balance
 
+    print(balance)
+    quit()
     # build transfer
     tx = build_transfer_tx(config, exchange, fee, balance, nonce)
     print(tx)
