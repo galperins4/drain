@@ -126,9 +126,10 @@ if __name__ == '__main__':
         check = wallet_balance - amount
         # check to see if the wallet is over the maintenance amount
         if check > 0:
-            print("wallet is over maintenance amount, draining difference"
+            print("wallet is over maintenance amount, draining difference")
             balance = check
         else:
+            print("balance below maintainence, no action needed")
             quit()
     else:
         # drain full balance
