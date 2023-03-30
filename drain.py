@@ -137,8 +137,6 @@ if __name__ == '__main__':
         # drain full balance
         balance = wallet_balance
 
-    print(balance)
-    quit()
     # build transfer
     tx = build_transfer_tx(config, exchange, fee, balance, nonce)
     print(tx)
