@@ -1,4 +1,4 @@
-# Drain Script (SOLAR ONLY)
+# Drain Script (ARK ONLY)
 
 ## Clean / New Installation
 ### clone repository
