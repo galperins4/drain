@@ -16,10 +16,10 @@ nano ~/drain/config.ini
 | :--- | :---: | :--- |
 | atomic | 100000000 | atomic value - do not change |
 | test | N | Set to Y if you want to test the config prior to a real transaction |
-| network | solar_mainnet | network value |
+| network | ark_mainnet | network value |
 | passphrase | passphrase | 12 word delegate passphrase |
 | secondphrase | None | Second 12 word delegate passphrase |
-| convert_from | sxp | Network the swap is sending from - solar only |
+| convert_from | ark | Network the swap is sending from - solar only |
 | convert_address | addr1 | Reward address we are converting from for the swap - can support one or many|
 | convert_to | usdc | Cryptocurrency we want to swap / exchange into - can support one or many |
 | address_to | usdc_addr | Addresses to exchange into - can support one or many |
