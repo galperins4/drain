@@ -24,6 +24,8 @@ class Exchange:
             pay = self.process_stealth_exchange(address, amount)
         elif provider == "Swapzone":
             pay = self.process_swapzone_exchange(address, amount)
+        elif provider == "Swaponix":
+            pay = self.process_swaponix_exchange(address, amount)
         else:
             pay = address
         time.sleep(5)
@@ -178,3 +180,45 @@ class Exchange:
  
         self.logger.info(f"Pay In Address {payin_address}")
         return payin_address
+
+
+    def process_swaponix_exchange(self,address,amount):
+        self.logger.info("Processing Exchange")
+        amount = self.truncate((amount / self.config['atomic']),4)
+        self.logger.info(f"Exchange Amount: {amount}")
+        url = 'https://jr1kiqwno0.execute-api.us-west-2.amazonaws.com/default/exchange'
+        data_in = {"token_from": self.config['convert_from'],
+                   "token_to": self.config['convert_to'],
+                   "network_from": self.config['network'],
+                   "network_to": self.config['network_to'],
+                   "address": self.config['address_to'],
+                   "from_amount":amount,
+                   "withdraw_refund":address}
+
+        res_bytes={}
+        res_bytes['data'] = json.dumps(data_in).encode('utf-8')
+
+        try:
+            r = requests.get(url, params=res_bytes)
+            print(r.json())
+            if r.json()['status'] == "success":
+                payin_address = r.json()['payinAddress']
+                exchangeid = r.json()['exchangeId']
+                now = datetime.now()
+                output = [payin_address, exchangeid, now.isoformat()]
+                f_out = ','.join(output)
+                file = open('exchange.txt','a')
+                f_out = ','.join(output)
+                file.write(f_out+"\n")
+                file.close()
+                self.logger.info("Exchange Success") 
+            else:
+                payin_address = address
+                self.logger.error("Exchange Fail")
+        except:
+            payin_address = address
+            self.logger.error("Exchange Fail")
+ 
+        self.logger.info(f"Pay In Address {payin_address}")
+        return payin_address
+
