@@ -40,11 +40,14 @@ class Exchange:
         self.logger.info(f"Exchange Amount: {amount}")
         url = 'https://t1mi6dwix2.execute-api.us-west-2.amazonaws.com/Test/exchange'
         data_in = {"fixed": fixed,
-                   "currency_from": self.config['convert_from'],
-                   "currency_to": self.config['convert_to'],
-                   "address_to": self.config['address_to'],
+                   "tickerFrom": self.config['convert_from'],
+                   "tickerTo": self.config['convert_to'],
                    "amount": str(amount),
-                   "user_refund_address":address}
+                   "networkFrom": self.config["network"],
+                   "networkTo": self.config["network_to"],
+                   "addressTo": self.config['address_to'],
+                   "amount": str(amount),
+                   "userRefundAddress":address}
         res_bytes={}
         res_bytes['data'] = json.dumps(data_in).encode('utf-8')
 
